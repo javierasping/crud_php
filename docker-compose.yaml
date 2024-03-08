@@ -1,0 +1,30 @@
+version: '3.1'
+services:
+  app:
+    container_name: crudphp__web
+    image: javierasping/crud_php:v1
+    restart: always
+    environment:
+      DB_HOST: mariadbcrud
+      DB_USER: javiercruces
+      DB_PASS: javiercruces
+      DB_PASSWORD: javiercruces
+      DB_NAME: crud
+      URL_BASE: 'http://prueba.javiercd.es/'
+    ports:
+      - 8087:80
+    depends_on:
+      - db
+  db:
+    container_name: mariadbcrud
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_DATABASE: crud
+      MYSQL_USER: javiercruces
+      MYSQL_PASSWORD: javiercruces
+      MYSQL_ROOT_PASSWORD: root_javiercruces
+    volumes:
+      - mariadb_crud:/var/lib/mysql
+volumes:
+    mariadb_crud:
