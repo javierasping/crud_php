@@ -2,7 +2,7 @@ version: '3.1'
 services:
   app:
     container_name: crudphp__web
-    image: javierasping/crud_php:v1
+    image: javierasping/crud_php:latest
     restart: always
     environment:
       DB_HOST: mariadbcrud
